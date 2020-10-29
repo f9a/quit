@@ -1,0 +1,59 @@
+# urls to linter checks descriptions
+#   - staticcheck https://staticcheck.io/docs/checks
+#   - gmnd:  https://github.com/tommy-muehle/go-mnd/#checks
+#   - exhaustive https://github.com/nishanths/exhaustive
+run:
+  skip-dirs:
+    - op
+    - example-requests
+linters:
+  enable-all: true
+  disable:
+    - gci
+    - testpackage
+    - goerr113
+    - gochecknoglobals
+    - wsl
+    - nlreturn
+    - nestif
+    - godox
+    - scopelint
+    - gomnd
+    - gocognit
+    - godot
+    - noctx
+linters-settings:
+  funlen:
+    lines: 80
+    statements: 60
+  lll:
+    line-length: 140
+  #   gmnd:
+  #     settings:
+  #       mnd:
+  #         checks: argument,case,return,operation
+  exhaustive:
+    default-signifies-exhaustive: true
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - gomnd
+        - funlen
+        - lll
+        - gosec
+        - golint
+    - path: _test_suite\.go
+      linters:
+        - gomnd
+        - funlen
+        - lll
+        - gosec
+        - golint
+    - path: _testsuite\.go
+      linters:
+        - gomnd
+        - funlen
+        - lll
+        - gosec
+        - golint
